@@ -1,0 +1,9 @@
+#!/bin/bash
+#SBATCH -J Apo1 
+#SBATCH -n 32 
+#SBATCH -t 139:59:59 -o monomer
+
+module load compilers/intel/2013_cluster_xe
+source /shares/hth.mbio.svarma/tools/gromacs-4.5.3-2013_cluster_xe/bin/GMXRC
+cd /work/n/nalvi/HN/Dimer/No_ligands/No_mutation/Run1
+mpirun /shares/hth.mbio.svarma/tools/gromacs-4.5.3-2013_cluster_xe/bin/mdrun_mpi -deffnm 510_530ns -npme 8 -nice 0 -v >& out

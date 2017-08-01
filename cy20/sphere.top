@@ -1,0 +1,21 @@
+#define _FF_GROMOS96
+#define _FF_GROMOS96S
+
+[ defaults ]
+; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
+  1             1                 yes             1.0     1.0
+
+#include "ffG43A1-S3par.02.itp"
+#include "lipids_43A1-S3.itp"
+;#include "methanol_hr.itp"
+#include "ch4_hr.itp"
+#include "spce.itp"
+
+[ system ]
+sphere in water
+
+[molecules]
+;Methanol   53
+CH4       73  
+SOL              1955
+

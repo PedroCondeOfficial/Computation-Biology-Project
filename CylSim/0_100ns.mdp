@@ -1,0 +1,70 @@
+;
+;	Last Edited - Sameer - 12.06.09
+;
+title               =  Collagen 
+cpp                 =  /usr/bin/cpp
+integrator          =  md
+tinit 		    =  0.0  
+dt                  =  0.002	; ps !
+nsteps              =  50000000	; total 100 ns
+;
+; CONSTRAINTS
+;
+constraints         =  all-bonds
+comm_mode	    =  linear
+nstcomm             =  100
+;
+; OUTPUT CONTROL
+;
+nstxout             =  500000
+nstvout             =  500000
+nstfout             =  0
+nstlog              =  1000
+nstenergy           =  100
+nstxtcout	    =  10000
+;
+; NEIGHBOR SEARCH & ELECTROSTATICS
+;
+pbc                 =  xyz
+nstlist             =  5
+ns_type             =  grid
+coulombtype         =  pme
+rcoulomb            =  1.0
+fourierspacing      =  0.1
+pme_order           =  4
+ewald_rtol          =  1.E-5
+optimize_fft        =  yes
+vdwtype		    =  cut-off
+rvdw                =  1.0
+rlist               =  1.0
+;
+; TEMPERATURE COUPLING
+;
+Tcoupl              =  v-rescale
+ld-seed		    =  -1 ; using process id as random seed
+tc-grps             =  SOL     CH4
+tau_t               =  1.0     1.0
+ref_t               =  310.0   5.0    
+;
+; PRESSURE COUPLING
+;
+Pcoupl              =  Parrinello-Rahman
+Pcoupltype          =  isotropic
+tau_p               =  1.0
+compressibility     =  4.5e-5
+ref_p               =  1.01325
+refcoord_scaling    =  all
+;
+; GENERATE VELOCITIES
+;
+gen_vel             =  yes
+gen_temp 	    =  310
+gen_seed	    =  122293
+;
+; Slow Growth
+;
+free_energy	    =  no
+;init_lambda	    =  0.21
+;delta_lambda	    =  0
+;sc_alpha	    =  0
+
